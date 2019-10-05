@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBCaffeBrainModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Addition">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" />
+    <NavigationProperty Name="AllProduct" Relationship="Self.FK__Additions__Produ__4D5F7D71" FromRole="Additions" ToRole="AllProduct" />
+  </EntityType>
+  <EntityType Name="AllProduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="New" Type="Boolean" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Additions" Relationship="Self.FK__Additions__Produ__4D5F7D71" FromRole="AllProduct" ToRole="Additions" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__AllProduc__Categ__300424B4" FromRole="AllProduct" ToRole="Category" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK__OrderDeta__AllPr__33D4B598" FromRole="AllProduct" ToRole="OrderDetails" />
+    <NavigationProperty Name="ProductAdditionsIDs" Relationship="Self.FK__ProductAd__AllPr__398D8EEE" FromRole="AllProduct" ToRole="ProductAdditionsID" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AllProducts" Relationship="Self.FK__AllProduc__Categ__300424B4" FromRole="Category" ToRole="AllProduct" />
+  </EntityType>
+  <EntityType Name="Enployee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MissionID" Type="Int32" Nullable="false" />
+    <Property Name="GenderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Enployee_Gender" FromRole="Enployee" ToRole="Gender" />
+    <NavigationProperty Name="Mission" Relationship="Self.FK_Enployee_Mission" FromRole="Enployee" ToRole="Mission" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Enployee" FromRole="Enployee" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Enployees" Relationship="Self.FK_Enployee_Gender" FromRole="Gender" ToRole="Enployee" />
+  </EntityType>
+  <EntityType Name="Mission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Enployees" Relationship="Self.FK_Enployee_Mission" FromRole="Mission" ToRole="Enployee" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AllProductID" Type="Int32" Nullable="false" />
+    <Property Name="EnployeeID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AllProduct" Relationship="Self.FK__OrderDeta__AllPr__33D4B598" FromRole="OrderDetails" ToRole="AllProduct" />
+    <NavigationProperty Name="Enployee" Relationship="Self.FK_OrderDetails_Enployee" FromRole="OrderDetails" ToRole="Enployee" />
+  </EntityType>
+  <EntityType Name="ProductAdditionsID">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AllProductID" Type="Int32" Nullable="false" />
+    <Property Name="AdditionsID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AllProduct" Relationship="Self.FK__ProductAd__AllPr__398D8EEE" FromRole="ProductAdditionsID" ToRole="AllProduct" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__Additions__Produ__4D5F7D71">
+    <End Role="AllProduct" Type="Self.AllProduct" Multiplicity="0..1" />
+    <End Role="Additions" Type="Self.Addition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AllProduct">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Additions">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__AllProduc__Categ__300424B4">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="AllProduct" Type="Self.AllProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="AllProduct">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__AllPr__33D4B598">
+    <End Role="AllProduct" Type="Self.AllProduct" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AllProduct">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="AllProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductAd__AllPr__398D8EEE">
+    <End Role="AllProduct" Type="Self.AllProduct" Multiplicity="1" />
+    <End Role="ProductAdditionsID" Type="Self.ProductAdditionsID" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AllProduct">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProductAdditionsID">
+        <PropertyRef Name="AllProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Enployee_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Enployee" Type="Self.Enployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Enployee">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Enployee_Mission">
+    <End Role="Mission" Type="Self.Mission" Multiplicity="1" />
+    <End Role="Enployee" Type="Self.Enployee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mission">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Enployee">
+        <PropertyRef Name="MissionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Enployee">
+    <End Role="Enployee" Type="Self.Enployee" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enployee">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="EnployeeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBCaffeBrainEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Additions" EntityType="Self.Addition" />
+    <EntitySet Name="AllProducts" EntityType="Self.AllProduct" />
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Enployees" EntityType="Self.Enployee" />
+    <EntitySet Name="Genders" EntityType="Self.Gender" />
+    <EntitySet Name="Missions" EntityType="Self.Mission" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="ProductAdditionsIDs" EntityType="Self.ProductAdditionsID" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__Additions__Produ__4D5F7D71" Association="Self.FK__Additions__Produ__4D5F7D71">
+      <End Role="AllProduct" EntitySet="AllProducts" />
+      <End Role="Additions" EntitySet="Additions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__AllProduc__Categ__300424B4" Association="Self.FK__AllProduc__Categ__300424B4">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="AllProduct" EntitySet="AllProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__AllPr__33D4B598" Association="Self.FK__OrderDeta__AllPr__33D4B598">
+      <End Role="AllProduct" EntitySet="AllProducts" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductAd__AllPr__398D8EEE" Association="Self.FK__ProductAd__AllPr__398D8EEE">
+      <End Role="AllProduct" EntitySet="AllProducts" />
+      <End Role="ProductAdditionsID" EntitySet="ProductAdditionsIDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Enployee_Gender" Association="Self.FK_Enployee_Gender">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Enployee" EntitySet="Enployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Enployee_Mission" Association="Self.FK_Enployee_Mission">
+      <End Role="Mission" EntitySet="Missions" />
+      <End Role="Enployee" EntitySet="Enployees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Enployee" Association="Self.FK_OrderDetails_Enployee">
+      <End Role="Enployee" EntitySet="Enployees" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
