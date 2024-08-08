@@ -172,7 +172,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(986, 638);
+            this.ClientSize = new System.Drawing.Size(1288, 782);
             this.Controls.Add(label6);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(label5);

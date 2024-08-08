@@ -37,7 +37,7 @@ namespace CoffeBrainDesktopApp
                 return;
             }
 
-            if (!CheckPassword(passvord, users.Password))
+            if (CheckPassword(passvord, users.Password))
             {
                 ShowMessage("Passvord or Username is Wrong");
                 return; 

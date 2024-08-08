@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
 using CoffeBrainDesktopApp.SQLDB;
-using static CoffeBrainDesktopApp.Utiliters.Utiliters;
-using System.Data.SqlClient;
+using DataGridViewCellEventArgs = System.Windows.Forms.DataGridViewCellEventArgs;
 
 namespace CoffeBrainDesktopApp
 {
@@ -27,9 +19,11 @@ namespace CoffeBrainDesktopApp
         private void AllProductList_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dBCaffeBrainDataSet8.AllProduct' table. You can move, or remove it, as needed.
-            this.allProductTableAdapter1.Fill(this.dBCaffeBrainDataSet8.AllProduct);
+         //   this.allProductTableAdapter1.Fill(this.dBCaffeBrainDataSet8.AllProduct);
             // TODO: This line of code loads data into the 'dBCaffeBrainDataSet7.AllProduct' table. You can move, or remove it, as needed.
-            this.allProductTableAdapter.Fill(this.dBCaffeBrainDataSet7.AllProduct);
+         //   this.allProductTableAdapter.Fill(this.dBCaffeBrainDataSet7.AllProduct);
+            
+            dataGridView_AllProductList.DataSource = _contex.AllProducts.ToList();
             FillCatagoryCombo();
         }
 
@@ -48,8 +42,6 @@ namespace CoffeBrainDesktopApp
             txbx_Price.Text = row.Cells[2].Value.ToString();
             cmbx_PNew.Text = row.Cells[3].Value.ToString();
             cmbx_PCatagory.Text = row.Cells[4].Value.ToString();
-
-            
         }
 
         private void btn_ExitAllEmploye_Click(object sender, EventArgs e)

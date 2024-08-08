@@ -3,7 +3,9 @@ using System.Windows.Forms;
 using System.Linq;
 using CoffeBrainDesktopApp.SQLDB;
 using static CoffeBrainDesktopApp.Utiliters.Utiliters;
-
+using DataGridViewCellEventArgs = System.Windows.Forms.DataGridViewCellEventArgs;
+using System.Collections.Generic;
+using System.Data;
 
 namespace CoffeBrainDesktopApp
 {
@@ -17,11 +19,16 @@ namespace CoffeBrainDesktopApp
             InitializeComponent();
             _contex = new DBCaffeBrainEntities();
         }
+        int selectAddEnployeeRows;
 
         private void CreateEnployee_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dBCaffeBrainDataSet4.Enployee' table. You can move, or remove it, as needed.
-            this.enployeeTableAdapter.Fill(this.dBCaffeBrainDataSet4.Enployee);
+         //   this.enployeeTableAdapter.Fill(this.dBCaffeBrainDataSet4.Enployee);
+            dataGridView_AddEmploye.AutoGenerateColumns = false;
+            dataGridView_AddEmploye.DataSource = _contex.Enployees.ToList();
+
+
             FillMissionCombo();
             FillGenderCombo();
         }
@@ -38,17 +45,6 @@ namespace CoffeBrainDesktopApp
             cmbx_Genders.Items.AddRange(_contex.Genders.ToArray());
         }
 
-        public void TextSpace()
-        {
-            txbx_Email.Text = "";
-            txbx_Firstname.Text = "";
-            txbx_Lasname.Text = "";
-            txbx_Password.Text = "";
-            txbx_Phone.Text = "";
-            txbx_Username.Text = "";
-            cmbx_Genders.SelectedItem = "";
-
-        }
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
@@ -61,12 +57,12 @@ namespace CoffeBrainDesktopApp
             Mission mission = cmbx_Mission.SelectedItem as Mission;
             Gender gender = cmbx_Genders.SelectedItem as Gender;
 
-            if (firstName == "" || lasName == "" || email == "" || userName == "" || password == "" || phonee == "" )
+            if (firstName == "" || lasName == "" || email == "" || userName == "" || password == "" || phonee == "")
             {
                 ShowMessage("FirstName or LasName or Email or UserName or Password or Phonee is empty ");
                 return;
             }
-            if(_contex.Enployees.Any(usr => usr.Username == userName || 
+            if (_contex.Enployees.Any(usr => usr.Username == userName ||
                            usr.Email == email || usr.Phone == phonee))
             {
                 ShowMessage("Username or Email or Phone is exists");
@@ -90,23 +86,60 @@ namespace CoffeBrainDesktopApp
                 GenderID = gender.ID
             };
 
-            int employee = dataGridView_AddEmployee.Rows.Add();
-            dataGridView_AddEmployee.Rows[employee].Cells[0].Value = txbx_Firstname.Text;
-            dataGridView_AddEmployee.Rows[employee].Cells[1].Value = txbx_Lasname.Text;
-            dataGridView_AddEmployee.Rows[employee].Cells[2].Value = txbx_Username.Text;
-            dataGridView_AddEmployee.Rows[employee].Cells[3].Value = txbx_Email.Text;
-            dataGridView_AddEmployee.Rows[employee].Cells[4].Value = cmbx_Genders.Text;
-            dataGridView_AddEmployee.Rows[employee].Cells[5].Value = cmbx_Mission.Text;
-            dataGridView_AddEmployee.Rows[employee].Cells[6].Value = txbx_Phone.Text;
-            dataGridView_AddEmployee.Rows[employee].Cells[7].Value = txbx_Password.Text;
-
-
+            //txbx_Firstname.Text = enployee2.Cells[0].ToString();
+            //txbx_Lasname.Text = enployee2.Cells[1].Value.ToString();
+            //txbx_Email.Text = enployee2.Cells[2].Value.ToString();
+            //txbx_Username.Text = enployee2.Cells[3].Value.ToString();
+            //txbx_Password.Text = enployee2.Cells[4].Value.ToString();
+            //txbx_Phone.Text = enployee2.Cells[5].Value.ToString();
+            //cmbx_Mission.Text = enployee2.Cells[6].Value.ToString();
+            //cmbx_Genders.Text = enployee2.Cells[7].Value.ToString();
+            //enployee2.Cells[0].Value = txbx_Firstname.Text;
+            //enployee2.Cells[1].Value = txbx_Lasname.Text;
+            //enployee2.Cells[2].Value = txbx_Email.Text;
+            //enployee2.Cells[3].Value = txbx_Username.Text;
+            //enployee2.Cells[4].Value = txbx_Password.Text;
+            //enployee2.Cells[5].Value = txbx_Phone.Text;
+            //enployee2.Cells[6].Value = cmbx_Mission.Text;
+            //enployee2.Cells[7].Value = cmbx_Genders.Text;
+            //dataGridView_AddEmploye.Rows[employee].Cells[0].Value = txbx_Firstname.Text;
+            //dataGridView_AddEmploye.Rows[employee].Cells[1].Value = txbx_Lasname.Text;
+            //dataGridView_AddEmploye.Rows[employee].Cells[2].Value = txbx_Username.Text;
+            //dataGridView_AddEmploye.Rows[employee].Cells[3].Value = txbx_Email.Text;
+            //dataGridView_AddEmploye.Rows[employee].Cells[4].Value = cmbx_Genders.Text;
+            //dataGridView_AddEmploye.Rows[employee].Cells[5].Value = cmbx_Mission.Text;
+            //dataGridView_AddEmploye.Rows[employee].Cells[6].Value = txbx_Phone.Text;
+            //dataGridView_AddEmploye.Rows[employee].Cells[7].Value = txbx_Password.Text;
 
             _contex.Enployees.Add(enployee);
             TextSpace();
+
+            DataGridViewRow enployee2 = dataGridView_AddEmploye.Rows[selectAddEnployeeRows];
+            enployee2.Cells[0].Value = txbx_Firstname.Text;
+            enployee2.Cells[1].Value = txbx_Lasname.Text;
+            enployee2.Cells[2].Value = txbx_Email.Text;
+            enployee2.Cells[3].Value = txbx_Username.Text;
+            enployee2.Cells[4].Value = txbx_Password.Text;
+            enployee2.Cells[5].Value = txbx_Phone.Text;
+            enployee2.Cells[6].Value = cmbx_Mission.Text;
+            enployee2.Cells[7].Value = cmbx_Genders.Text;
+
             _contex.SaveChanges();
 
             ShowMessage("User succseesfully selected", error: false);
+        }
+
+      
+
+        public void TextSpace()
+        {
+            txbx_Email.Text = "";
+            txbx_Firstname.Text = "";
+            txbx_Lasname.Text = "";
+            txbx_Password.Text = "";
+            txbx_Phone.Text = "";
+            txbx_Username.Text = "";
+            cmbx_Genders.SelectedItem = "";
 
         }
 
@@ -142,7 +175,5 @@ namespace CoffeBrainDesktopApp
                 txbx_Lasname.Text = txbx_Lasname.Text.Remove(txbx_Lasname.Text.Length - 1);
             }
         }
-
-     
     }
 }

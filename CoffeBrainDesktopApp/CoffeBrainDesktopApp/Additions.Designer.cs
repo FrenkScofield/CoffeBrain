@@ -126,7 +126,6 @@
             this.btn_Add.Text = "Add";
             this.btn_Add.UseVisualStyleBackColor = false;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;

@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CoffeBrainDesktopApp</RootNamespace>
     <AssemblyName>CoffeBrainDesktopApp</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -192,6 +193,7 @@
     <Compile Include="SQLDB\sysdiagram.cs">
       <DependentUpon>db.tt</DependentUpon>
     </Compile>
+    <Compile Include="System\DataGridViewCellEventArgs.cs" />
     <Compile Include="Utiliters\Utiliters.cs" />
     <EmbeddedResource Include="Additions.resx">
       <DependentUpon>Additions.cs</DependentUpon>
@@ -225,6 +227,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="DBCaffeBrainDataSet.xsc">
       <DependentUpon>DBCaffeBrainDataSet.xsd</DependentUpon>

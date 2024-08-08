@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Linq;
 using CoffeBrainDesktopApp.SQLDB;
-using static CoffeBrainDesktopApp.Utiliters.Utiliters;
-using System.Data.SqlClient;
-
-
+using DataGridViewCellEventArgs = System.Windows.Forms.DataGridViewCellEventArgs;
 
 namespace CoffeBrainDesktopApp
 {
@@ -28,10 +19,15 @@ namespace CoffeBrainDesktopApp
             _contex = new DBCaffeBrainEntities();
         }
         int selectRows;
+        BindingList<Enployee> bindigEnployees;
         private void AllEmploye_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dBCaffeBrainDataSet5.Enployee' table. You can move, or remove it, as needed.
-            this.enployeeTableAdapter.Fill(this.dBCaffeBrainDataSet5.Enployee);
+            // this.enployeeTableAdapter.Fill(this.dBCaffeBrainDataSet5.Enployee);
+            bindigEnployees = new BindingList<Enployee>();
+           dataGridView_AllEmploye.DataSource = _contex.Enployees.ToList();
+           
+
             FillMissionANDGenderCombo();
         }
         private void FillMissionANDGenderCombo()
@@ -49,14 +45,14 @@ namespace CoffeBrainDesktopApp
             txbx_Firstname.Text = row.Cells[1].Value.ToString();
             txbx_Lasname.Text = row.Cells[2].Value.ToString();
             txbx_Email.Text = row.Cells[3].Value.ToString();
-           txbx_Phone.Text = row.Cells[4].Value.ToString();
+            txbx_Phone.Text = row.Cells[4].Value.ToString();
             txbx_Username.Text = row.Cells[5].Value.ToString();
             txbx_Password.Text = row.Cells[6].Value.ToString();
             cmbx_Mission.Text = row.Cells[7].Value.ToString();
             cmbx_Genders.Text = row.Cells[8].Value.ToString();
-            
+
         }
-        
+
         public void TextSpace()
         {
             txbx_Email.Text = "";
@@ -107,8 +103,10 @@ namespace CoffeBrainDesktopApp
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-           
-            dataGridView_AllEmploye.Rows.RemoveAt(selectRows);
+            selectRows = dataGridView_AllEmploye.CurrentCell.RowIndex;
+           // dataGridView_AllEmploye.Rows.RemoveAt(this.dataGridView_AllEmploye.SelectedRows[0].Index);
+            bindigEnployees.RemoveAt(dataGridView_AllEmploye.SelectedRows[0].Index);
+            dataGridView_AllEmploye.Refresh();
             var Id = int.Parse(txbx_Id.Text);
             Enployee enployee = _contex.Enployees.FirstOrDefault(v => v.id == Id); 
             _contex.Enployees.Remove(enployee);

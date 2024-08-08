@@ -39,6 +39,8 @@
             System.Windows.Forms.Label label8;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateEnployee));
             this.txbx_Firstname = new System.Windows.Forms.TextBox();
+            this.enployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dBCaffeBrainDataSet4 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet4();
             this.btn_Add = new System.Windows.Forms.Button();
             this.cmbx_Genders = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,19 +50,18 @@
             this.txbx_Password = new System.Windows.Forms.TextBox();
             this.cmbx_Mission = new System.Windows.Forms.ComboBox();
             this.btn_Exit = new System.Windows.Forms.Button();
-            this.dataGridView_AddEmployee = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dBCaffeBrainDataSet4 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet4();
-            this.enployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridView_AddEmploye = new System.Windows.Forms.DataGridView();
             this.enployeeTableAdapter = new CoffeBrainDesktopApp.DBCaffeBrainDataSet4TableAdapters.EnployeeTableAdapter();
             this.txbx_Phone = new System.Windows.Forms.TextBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nickname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mission = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Username = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -69,9 +70,9 @@
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AddEmployee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enployeeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AddEmploye)).BeginInit();
             this.SuspendLayout();
             // 
             // Username
@@ -188,6 +189,7 @@
             // 
             // txbx_Firstname
             // 
+            this.txbx_Firstname.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.enployeeBindingSource, "FirstName", true));
             this.txbx_Firstname.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbx_Firstname.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txbx_Firstname.Location = new System.Drawing.Point(78, 136);
@@ -197,14 +199,24 @@
             this.txbx_Firstname.TabIndex = 1;
             this.txbx_Firstname.TextChanged += new System.EventHandler(this.txbx_Firstname_TextChanged);
             // 
+            // enployeeBindingSource
+            // 
+            this.enployeeBindingSource.DataMember = "Enployee";
+            this.enployeeBindingSource.DataSource = this.dBCaffeBrainDataSet4;
+            // 
+            // dBCaffeBrainDataSet4
+            // 
+            this.dBCaffeBrainDataSet4.DataSetName = "DBCaffeBrainDataSet4";
+            this.dBCaffeBrainDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btn_Add
             // 
             this.btn_Add.BackColor = System.Drawing.Color.Green;
             this.btn_Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Add.ForeColor = System.Drawing.Color.Chocolate;
-            this.btn_Add.Location = new System.Drawing.Point(945, 507);
+            this.btn_Add.Location = new System.Drawing.Point(1026, 541);
             this.btn_Add.Name = "btn_Add";
-            this.btn_Add.Size = new System.Drawing.Size(165, 49);
+            this.btn_Add.Size = new System.Drawing.Size(143, 51);
             this.btn_Add.TabIndex = 2;
             this.btn_Add.Text = "Add";
             this.btn_Add.UseVisualStyleBackColor = false;
@@ -242,7 +254,6 @@
             this.txbx_Username.Name = "txbx_Username";
             this.txbx_Username.Size = new System.Drawing.Size(224, 38);
             this.txbx_Username.TabIndex = 6;
-           
             // 
             // txbx_Lasname
             // 
@@ -292,80 +303,32 @@
             this.btn_Exit.BackColor = System.Drawing.Color.SaddleBrown;
             this.btn_Exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.ForeColor = System.Drawing.Color.LimeGreen;
-            this.btn_Exit.Location = new System.Drawing.Point(945, 596);
+            this.btn_Exit.Location = new System.Drawing.Point(1026, 619);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(165, 49);
+            this.btn_Exit.Size = new System.Drawing.Size(143, 53);
             this.btn_Exit.TabIndex = 19;
             this.btn_Exit.Text = "Exit";
             this.btn_Exit.UseVisualStyleBackColor = false;
             this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
-            // dataGridView_AddEmployee
+            // dataGridView_AddEmploye
             // 
-            this.dataGridView_AddEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_AddEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
-            this.dataGridView_AddEmployee.Location = new System.Drawing.Point(78, 332);
-            this.dataGridView_AddEmployee.Name = "dataGridView_AddEmployee";
-            this.dataGridView_AddEmployee.Size = new System.Drawing.Size(844, 313);
-            this.dataGridView_AddEmployee.TabIndex = 21;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "FirstName";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "LastName";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "UserName";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Email";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Gender";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Mission";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Phone";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Password";
-            this.Column8.Name = "Column8";
-            // 
-            // dBCaffeBrainDataSet4
-            // 
-            this.dBCaffeBrainDataSet4.DataSetName = "DBCaffeBrainDataSet4";
-            this.dBCaffeBrainDataSet4.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // enployeeBindingSource
-            // 
-            this.enployeeBindingSource.DataMember = "Enployee";
-            this.enployeeBindingSource.DataSource = this.dBCaffeBrainDataSet4;
+            this.dataGridView_AddEmploye.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_AddEmploye.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.FirstName,
+            this.LastName,
+            this.Nickname,
+            this.Email,
+            this.Gender,
+            this.Mission,
+            this.Phone,
+            this.Password});
+            this.dataGridView_AddEmploye.Location = new System.Drawing.Point(78, 332);
+            this.dataGridView_AddEmploye.Name = "dataGridView_AddEmploye";
+            this.dataGridView_AddEmploye.Size = new System.Drawing.Size(942, 340);
+            this.dataGridView_AddEmploye.TabIndex = 21;
+         //   this.dataGridView_AddEmploye.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_AddEmployee_CellContentClick);
             // 
             // enployeeTableAdapter
             // 
@@ -382,15 +345,69 @@
             this.txbx_Phone.TabIndex = 22;
             this.txbx_Phone.TextChanged += new System.EventHandler(this.txbx_Phone_TextChanged);
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            // 
+            // FirstName
+            // 
+            this.FirstName.DataPropertyName = "FirstName";
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.Name = "FirstName";
+            // 
+            // LastName
+            // 
+            this.LastName.DataPropertyName = "LastName";
+            this.LastName.HeaderText = "LastName";
+            this.LastName.Name = "LastName";
+            // 
+            // Nickname
+            // 
+            this.Nickname.DataPropertyName = "Username";
+            this.Nickname.HeaderText = "Nickname";
+            this.Nickname.Name = "Nickname";
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
+            // Gender
+            // 
+            this.Gender.DataPropertyName = "Gender";
+            this.Gender.HeaderText = "Gender";
+            this.Gender.Name = "Gender";
+            // 
+            // Mission
+            // 
+            this.Mission.DataPropertyName = "Mission";
+            this.Mission.HeaderText = "Mission";
+            this.Mission.Name = "Mission";
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "Phone";
+            this.Phone.HeaderText = "Phone";
+            this.Phone.Name = "Phone";
+            // 
+            // Password
+            // 
+            this.Password.DataPropertyName = "Password";
+            this.Password.HeaderText = "Password";
+            this.Password.Name = "Password";
+            // 
             // CreateEnployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1105, 657);
+            this.ClientSize = new System.Drawing.Size(1348, 799);
             this.Controls.Add(this.txbx_Phone);
-            this.Controls.Add(this.dataGridView_AddEmployee);
+            this.Controls.Add(this.dataGridView_AddEmploye);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(label8);
             this.Controls.Add(this.cmbx_Mission);
@@ -413,9 +430,9 @@
             this.Text = "CreateEnployee";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CreateEnployee_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AddEmployee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enployeeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AddEmploye)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,18 +449,19 @@
         private System.Windows.Forms.ComboBox cmbx_Mission;
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.TextBox txbx_Password;
-        private System.Windows.Forms.DataGridView dataGridView_AddEmployee;
+        private System.Windows.Forms.DataGridView dataGridView_AddEmploye;
         private DBCaffeBrainDataSet4 dBCaffeBrainDataSet4;
         private System.Windows.Forms.BindingSource enployeeBindingSource;
         private DBCaffeBrainDataSet4TableAdapters.EnployeeTableAdapter enployeeTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.TextBox txbx_Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nickname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mission;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
     }
 }

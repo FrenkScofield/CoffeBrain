@@ -42,14 +42,14 @@
             this.allProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.allProductTableAdapter = new CoffeBrainDesktopApp.DBCaffeBrainDataSet7TableAdapters.AllProductTableAdapter();
             this.dataGridView_AllProductList = new System.Windows.Forms.DataGridView();
-            this.dBCaffeBrainDataSet8 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet8();
-            this.allProductBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.allProductTableAdapter1 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet8TableAdapters.AllProductTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.newDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allProductBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dBCaffeBrainDataSet8 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet8();
+            this.allProductTableAdapter1 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet8TableAdapters.AllProductTableAdapter();
             this.txbx_PId = new System.Windows.Forms.TextBox();
             this.btn_Update = new System.Windows.Forms.Button();
             this.btn_ExitAllEmploye = new System.Windows.Forms.Button();
@@ -64,23 +64,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AllProductList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet8)).BeginInit();
             this.SuspendLayout();
-            // 
-            // cmbx_PNew
-            // 
-            this.cmbx_PNew.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbx_PNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbx_PNew.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.cmbx_PNew.FormattingEnabled = true;
-            this.cmbx_PNew.Items.AddRange(new object[] {
-            "True",
-            "False"});
-            this.cmbx_PNew.Location = new System.Drawing.Point(83, 369);
-            this.cmbx_PNew.Name = "cmbx_PNew";
-            this.cmbx_PNew.Size = new System.Drawing.Size(224, 37);
-            this.cmbx_PNew.TabIndex = 54;
             // 
             // label4
             // 
@@ -110,17 +96,6 @@
             txbx_Pnavbcme.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             txbx_Pnavbcme.UseMnemonic = false;
             // 
-            // txbx_PName
-            // 
-            this.txbx_PName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbx_PName.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.txbx_PName.Location = new System.Drawing.Point(83, 274);
-            this.txbx_PName.Multiline = true;
-            this.txbx_PName.Name = "txbx_PName";
-            this.txbx_PName.Size = new System.Drawing.Size(224, 38);
-            this.txbx_PName.TabIndex = 51;
-            this.txbx_PName.TextChanged += new System.EventHandler(this.txbx_PName_TextChanged);
-            // 
             // txbx_Pprice
             // 
             txbx_Pprice.AutoSize = true;
@@ -148,6 +123,45 @@
             Username.Text = "Category ID";
             Username.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             Username.UseMnemonic = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.BackColor = System.Drawing.Color.Transparent;
+            label9.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label9.ForeColor = System.Drawing.Color.LightGreen;
+            label9.Location = new System.Drawing.Point(79, 439);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(28, 20);
+            label9.TabIndex = 74;
+            label9.Text = "ID";
+            label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            label9.UseMnemonic = false;
+            // 
+            // cmbx_PNew
+            // 
+            this.cmbx_PNew.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbx_PNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbx_PNew.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.cmbx_PNew.FormattingEnabled = true;
+            this.cmbx_PNew.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.cmbx_PNew.Location = new System.Drawing.Point(83, 369);
+            this.cmbx_PNew.Name = "cmbx_PNew";
+            this.cmbx_PNew.Size = new System.Drawing.Size(224, 37);
+            this.cmbx_PNew.TabIndex = 54;
+            // 
+            // txbx_PName
+            // 
+            this.txbx_PName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbx_PName.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.txbx_PName.Location = new System.Drawing.Point(83, 274);
+            this.txbx_PName.Multiline = true;
+            this.txbx_PName.Name = "txbx_PName";
+            this.txbx_PName.Size = new System.Drawing.Size(224, 38);
+            this.txbx_PName.TabIndex = 51;
+            this.txbx_PName.TextChanged += new System.EventHandler(this.txbx_PName_TextChanged);
             // 
             // cmbx_PCatagory
             // 
@@ -190,21 +204,6 @@
             this.dataGridView_AllProductList.Size = new System.Drawing.Size(552, 507);
             this.dataGridView_AllProductList.TabIndex = 57;
             this.dataGridView_AllProductList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_AllProductList_CellClick);
-            // 
-            // dBCaffeBrainDataSet8
-            // 
-            this.dBCaffeBrainDataSet8.DataSetName = "DBCaffeBrainDataSet8";
-            this.dBCaffeBrainDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // allProductBindingSource1
-            // 
-            this.allProductBindingSource1.DataMember = "AllProduct";
-            this.allProductBindingSource1.DataSource = this.dBCaffeBrainDataSet8;
-            // 
-            // allProductTableAdapter1
-            // 
-            this.allProductTableAdapter1.ClearBeforeFill = true;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -236,6 +235,20 @@
             this.categoryIDDataGridViewTextBoxColumn.HeaderText = "CategoryID";
             this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
             // 
+            // allProductBindingSource1
+            // 
+            this.allProductBindingSource1.DataMember = "AllProduct";
+            this.allProductBindingSource1.DataSource = this.dBCaffeBrainDataSet8;
+            // 
+            // dBCaffeBrainDataSet8
+            // 
+            this.dBCaffeBrainDataSet8.DataSetName = "DBCaffeBrainDataSet8";
+            this.dBCaffeBrainDataSet8.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // allProductTableAdapter1
+            // 
+            this.allProductTableAdapter1.ClearBeforeFill = true;
+            // 
             // txbx_PId
             // 
             this.txbx_PId.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -246,20 +259,6 @@
             this.txbx_PId.ReadOnly = true;
             this.txbx_PId.Size = new System.Drawing.Size(224, 38);
             this.txbx_PId.TabIndex = 75;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.BackColor = System.Drawing.Color.Transparent;
-            label9.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            label9.ForeColor = System.Drawing.Color.LightGreen;
-            label9.Location = new System.Drawing.Point(79, 439);
-            label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(28, 20);
-            label9.TabIndex = 74;
-            label9.Text = "ID";
-            label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            label9.UseMnemonic = false;
             // 
             // btn_Update
             // 
@@ -352,8 +351,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AllProductList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
