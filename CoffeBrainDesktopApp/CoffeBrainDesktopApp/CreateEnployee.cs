@@ -115,16 +115,18 @@ namespace CoffeBrainDesktopApp
             TextSpace();
 
             DataGridViewRow enployee2 = dataGridView_AddEmploye.Rows[selectAddEnployeeRows];
-            enployee2.Cells[0].Value = txbx_Firstname.Text;
-            enployee2.Cells[1].Value = txbx_Lasname.Text;
-            enployee2.Cells[2].Value = txbx_Email.Text;
+            enployee2.Cells[1].Value = txbx_Firstname.Text;
+            enployee2.Cells[2].Value = txbx_Lasname.Text;
             enployee2.Cells[3].Value = txbx_Username.Text;
-            enployee2.Cells[4].Value = txbx_Password.Text;
-            enployee2.Cells[5].Value = txbx_Phone.Text;
-            enployee2.Cells[6].Value = cmbx_Mission.Text;
-            enployee2.Cells[7].Value = cmbx_Genders.Text;
+            enployee2.Cells[4].Value = txbx_Email.Text;
+            enployee2.Cells[5].Value = gender;
+            enployee2.Cells[6].Value = mission;
+            enployee2.Cells[7].Value = txbx_Phone.Text;
+            enployee2.Cells[8].Value = txbx_Password.Text;
 
             _contex.SaveChanges();
+
+            dataGridView_AddEmploye.DataSource = _contex.Enployees.ToList();
 
             ShowMessage("User succseesfully selected", error: false);
         }

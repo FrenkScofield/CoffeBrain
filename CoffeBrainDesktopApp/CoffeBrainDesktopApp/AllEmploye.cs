@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using CoffeBrainDesktopApp.SQLDB;
@@ -39,8 +40,11 @@ namespace CoffeBrainDesktopApp
 
         private void dataGridView_AllEmploye_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             selectRows = e.RowIndex;
             DataGridViewRow row = dataGridView_AllEmploye.Rows[selectRows];
+            if (row.Cells[7].Value != null)
+            {
             txbx_Id.Text = row.Cells[0].Value.ToString();
             txbx_Firstname.Text = row.Cells[1].Value.ToString();
             txbx_Lasname.Text = row.Cells[2].Value.ToString();
@@ -50,6 +54,12 @@ namespace CoffeBrainDesktopApp
             txbx_Password.Text = row.Cells[6].Value.ToString();
             cmbx_Mission.Text = row.Cells[7].Value.ToString();
             cmbx_Genders.Text = row.Cells[8].Value.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Selected employee not found");
+                dataGridView_AllEmploye.Refresh();
+            }
 
         }
 
@@ -66,30 +76,41 @@ namespace CoffeBrainDesktopApp
         }
         private void btn_Update_Click(object sender, EventArgs e)
         {
-            DataGridViewRow NewdataGridViewRow = dataGridView_AllEmploye.Rows[selectRows];
-         
-            NewdataGridViewRow.Cells[1].Value = txbx_Firstname.Text;
-            NewdataGridViewRow.Cells[2].Value = txbx_Lasname.Text;
-            NewdataGridViewRow.Cells[3].Value = txbx_Email.Text;
-            NewdataGridViewRow.Cells[4].Value = txbx_Phone.Text;
-            NewdataGridViewRow.Cells[5].Value = txbx_Username.Text;
-            NewdataGridViewRow.Cells[6].Value = txbx_Password.Text;
-            NewdataGridViewRow.Cells[7].Value = (cmbx_Mission.SelectedItem as Mission).ID;
-            NewdataGridViewRow.Cells[8].Value = (cmbx_Genders.SelectedItem as Gender).ID;
-            var Id = int.Parse(txbx_Id.Text);
-            Enployee enployee = _contex.Enployees.FirstOrDefault(v=>v.id==Id);
-            enployee.FirstName = txbx_Firstname.Text.Trim();
-            enployee.LastName = txbx_Lasname.Text.Trim();
-            enployee.Email = txbx_Email.Text.Trim();
-            enployee.Username = txbx_Username.Text.Trim();
-            enployee.Password = txbx_Password.Text.Trim();
-            enployee.Phone = txbx_Phone.Text.Trim();
-            enployee.MissionID = (cmbx_Mission.SelectedItem as Mission).ID;
-            enployee.GenderID = (cmbx_Genders.SelectedItem as Gender).ID;
+            if (txbx_Id.Text != "")
+            {
+                DataGridViewRow NewdataGridViewRow = dataGridView_AllEmploye.Rows[selectRows];
 
-            TextSpace();
-            _contex.SaveChanges();
-        }
+                NewdataGridViewRow.Cells[1].Value = txbx_Firstname.Text;
+                NewdataGridViewRow.Cells[2].Value = txbx_Lasname.Text;
+                NewdataGridViewRow.Cells[3].Value = txbx_Email.Text;
+                NewdataGridViewRow.Cells[4].Value = txbx_Phone.Text;
+                NewdataGridViewRow.Cells[5].Value = txbx_Username.Text;
+                NewdataGridViewRow.Cells[6].Value = txbx_Password.Text;
+                NewdataGridViewRow.Cells[7].Value = cmbx_Mission.SelectedItem as Mission;
+                NewdataGridViewRow.Cells[8].Value = cmbx_Genders.SelectedItem as Gender;
+                var Id = int.Parse(txbx_Id.Text);
+                Enployee enployee = _contex.Enployees.FirstOrDefault(v => v.id == Id);
+                enployee.FirstName = txbx_Firstname.Text.Trim();
+                enployee.LastName = txbx_Lasname.Text.Trim();
+                enployee.Email = txbx_Email.Text.Trim();
+                enployee.Username = txbx_Username.Text.Trim();
+                enployee.Password = txbx_Password.Text.Trim();
+                enployee.Phone = txbx_Phone.Text.Trim();
+                enployee.MissionID = (cmbx_Mission.SelectedItem as Mission).ID;
+                enployee.GenderID = (cmbx_Genders.SelectedItem as Gender).ID;
+
+                TextSpace();
+                _contex.SaveChanges();
+                MessageBox.Show("Update success");
+
+            }
+            else
+            {
+            MessageBox.Show("Please select any employee");
+            }
+
+        
+    }
 
         private string HashPassword(object password)
         {
@@ -103,17 +124,21 @@ namespace CoffeBrainDesktopApp
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            selectRows = dataGridView_AllEmploye.CurrentCell.RowIndex;
-           // dataGridView_AllEmploye.Rows.RemoveAt(this.dataGridView_AllEmploye.SelectedRows[0].Index);
-            bindigEnployees.RemoveAt(dataGridView_AllEmploye.SelectedRows[0].Index);
-            dataGridView_AllEmploye.Refresh();
-            var Id = int.Parse(txbx_Id.Text);
-            Enployee enployee = _contex.Enployees.FirstOrDefault(v => v.id == Id); 
-            _contex.Enployees.Remove(enployee);
-            MessageBox.Show("Successfully deleted");
-            TextSpace();
-            _contex.SaveChanges();
-        }
+            if (txbx_Id.Text != "")
+            {
+                var Id = int.Parse(txbx_Id.Text);
+                Enployee enployee = _contex.Enployees.FirstOrDefault(v => v.id == Id);
+                _contex.Enployees.Remove(enployee);
+                _contex.SaveChanges();
+                dataGridView_AllEmploye.DataSource = _contex.Enployees.ToList();
+                MessageBox.Show("Successfully deleted");
+                TextSpace();
+            }
+            else
+            {
+                MessageBox.Show("Please select any employee");
+            }
+            }
 
         private void txbx_Firstname_TextChanged(object sender, EventArgs e)
         {
