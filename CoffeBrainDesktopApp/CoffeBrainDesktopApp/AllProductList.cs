@@ -72,31 +72,48 @@ namespace CoffeBrainDesktopApp
         }
         private void btn_Update_Click(object sender, EventArgs e)
         {
+            if (txbx_PId.Text != "")
+            {
             DataGridViewRow newdataGridViewRow = dataGridView_AllProductList.Rows[selectRows];
-           // newdataGridViewRow.Cells[0].Value = txbx_PId.Text;
             newdataGridViewRow.Cells[1].Value = txbx_PName.Text;
             newdataGridViewRow.Cells[2].Value = txbx_Price.Text;
-          //  newdataGridViewRow.Cells[3].Value = cmbx_PNew.Text;
-            newdataGridViewRow.Cells[4].Value = (cmbx_PCatagory.SelectedItem as Category).id;
+             newdataGridViewRow.Cells[3].Value = cmbx_PNew.Text;
+            newdataGridViewRow.Cells[4].Value = cmbx_PCatagory.SelectedItem as Category;
             int id = int.Parse(txbx_PId.Text);
             AllProduct allProduct = _contex.AllProducts.FirstOrDefault(s => s.id == id);
             allProduct.Name = txbx_PName.Text.Trim();
             allProduct.Price = txbx_Price.Text.Trim();
-          //  allProduct.New = (bool)cmbx_PNew.SelectedItem;
+            allProduct.New = Convert.ToBoolean(cmbx_PNew.SelectedItem);
             allProduct.CategoryID = (cmbx_PCatagory.SelectedItem as Category).id;
             TextSpace();
             _contex.SaveChanges();
-        }
+                MessageBox.Show("Update success");
+            }
+            else
+            {
+            MessageBox.Show("Please select any Product");
+            }
+}
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            dataGridView_AllProductList.Rows.RemoveAt(selectRows);
-            int id = int.Parse(txbx_PId.Text);
-            AllProduct allProduct = _contex.AllProducts.FirstOrDefault(s => s.id == id);
-            _contex.AllProducts.Remove(allProduct);
-            MessageBox.Show("Successfully deleted");
-            TextSpace();
-            _contex.SaveChanges();
+            if(txbx_PId.Text != "")
+            {
+                int id = int.Parse(txbx_PId.Text);
+                AllProduct allProduct = _contex.AllProducts.FirstOrDefault(s => s.id == id);
+                _contex.AllProducts.Remove(allProduct);
+                MessageBox.Show("Successfully deleted");
+                TextSpace();
+                _contex.SaveChanges();
+                dataGridView_AllProductList.DataSource = _contex.AllProducts.ToList();
+            }
+            else
+            {
+                MessageBox.Show("Please select any Product");
+
+            }
+
+
         }
     }
 }

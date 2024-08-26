@@ -82,18 +82,13 @@ namespace CoffeBrainDesktopApp
             if (productNum >= 0 && productNum < dataGridView.Rows.Count)
             {
                 DataGridViewRow product = dataGridView.Rows[productNum];
-
-                // productNum = dataGridView.Rows.Add();
-                //  int n = dataGridView.Rows.Add();
                 product.Cells[1].Value = txbx_price.Text;
-            product.Cells[2].Value = txbx_Name.Text;
-            product.Cells[3].Value = cmbx_New.Text;
+                product.Cells[2].Value = txbx_Name.Text;
+                product.Cells[3].Value = cmbx_New.Text;
                 product.Cells[4].Value = category;
-
             }
             else
             {
-                // Handle the case where the index is out of range
                 Console.WriteLine("Product number is out of range.");
             }
             _contex.SaveChanges();

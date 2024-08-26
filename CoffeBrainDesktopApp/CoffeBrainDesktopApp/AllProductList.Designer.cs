@@ -42,11 +42,6 @@
             this.allProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.allProductTableAdapter = new CoffeBrainDesktopApp.DBCaffeBrainDataSet7TableAdapters.AllProductTableAdapter();
             this.dataGridView_AllProductList = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.newDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.allProductBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dBCaffeBrainDataSet8 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet8();
             this.allProductTableAdapter1 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet8TableAdapters.AllProductTableAdapter();
@@ -56,6 +51,11 @@
             this.btn_Delete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txbx_Price = new System.Windows.Forms.TextBox();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.newDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label4 = new System.Windows.Forms.Label();
             txbx_Pnavbcme = new System.Windows.Forms.Label();
             txbx_Pprice = new System.Windows.Forms.Label();
@@ -201,39 +201,10 @@
             this.dataGridView_AllProductList.DataSource = this.allProductBindingSource1;
             this.dataGridView_AllProductList.Location = new System.Drawing.Point(736, 274);
             this.dataGridView_AllProductList.Name = "dataGridView_AllProductList";
+            this.dataGridView_AllProductList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_AllProductList.Size = new System.Drawing.Size(552, 507);
             this.dataGridView_AllProductList.TabIndex = 57;
             this.dataGridView_AllProductList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_AllProductList_CellClick);
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // newDataGridViewCheckBoxColumn
-            // 
-            this.newDataGridViewCheckBoxColumn.DataPropertyName = "New";
-            this.newDataGridViewCheckBoxColumn.HeaderText = "New";
-            this.newDataGridViewCheckBoxColumn.Name = "newDataGridViewCheckBoxColumn";
-            // 
-            // categoryIDDataGridViewTextBoxColumn
-            // 
-            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "CategoryID";
-            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "CategoryID";
-            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
             // 
             // allProductBindingSource1
             // 
@@ -322,6 +293,37 @@
             this.txbx_Price.TabIndex = 77;
             this.txbx_Price.TextChanged += new System.EventHandler(this.txbx_Price_TextChanged);
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // newDataGridViewCheckBoxColumn
+            // 
+            this.newDataGridViewCheckBoxColumn.DataPropertyName = "New";
+            this.newDataGridViewCheckBoxColumn.HeaderText = "New";
+            this.newDataGridViewCheckBoxColumn.Name = "newDataGridViewCheckBoxColumn";
+            // 
+            // categoryIDDataGridViewTextBoxColumn
+            // 
+            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "CategoryID";
+            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
+            // 
             // AllProductList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,16 +371,16 @@
         private DBCaffeBrainDataSet8 dBCaffeBrainDataSet8;
         private System.Windows.Forms.BindingSource allProductBindingSource1;
         private DBCaffeBrainDataSet8TableAdapters.AllProductTableAdapter allProductTableAdapter1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn newDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox txbx_PId;
         private System.Windows.Forms.Button btn_Update;
         private System.Windows.Forms.Button btn_ExitAllEmploye;
         private System.Windows.Forms.Button btn_Delete;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbx_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn newDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn;
     }
 }
