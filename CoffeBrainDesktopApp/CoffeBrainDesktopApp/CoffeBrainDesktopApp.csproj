@@ -136,6 +136,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCaffeBrainDataSet8.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DBCaffeBrainDataSet9.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBCaffeBrainDataSet9.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,6 +332,17 @@
     </None>
     <None Include="DBCaffeBrainDataSet8.xss">
       <DependentUpon>DBCaffeBrainDataSet8.xsd</DependentUpon>
+    </None>
+    <None Include="DBCaffeBrainDataSet9.xsc">
+      <DependentUpon>DBCaffeBrainDataSet9.xsd</DependentUpon>
+    </None>
+    <None Include="DBCaffeBrainDataSet9.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBCaffeBrainDataSet9.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBCaffeBrainDataSet9.xss">
+      <DependentUpon>DBCaffeBrainDataSet9.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

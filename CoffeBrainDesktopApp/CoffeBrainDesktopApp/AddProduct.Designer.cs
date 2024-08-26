@@ -44,14 +44,18 @@
             this.allProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.allProductTableAdapter = new CoffeBrainDesktopApp.DBCaffeBrainDataSet1TableAdapters.AllProductTableAdapter();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.allProductBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dBCaffeBrainDataSet9 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet9();
             this.dBCaffeBrainDataSet3 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet3();
             this.allProductBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.allProductTableAdapter1 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet3TableAdapters.AllProductTableAdapter();
             this.txbx_price = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.allProductTableAdapter2 = new CoffeBrainDesktopApp.DBCaffeBrainDataSet9TableAdapters.AllProductTableAdapter();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.New = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CategoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label4 = new System.Windows.Forms.Label();
             txbx_Pnavbcme = new System.Windows.Forms.Label();
             txbx_Pprice = new System.Windows.Forms.Label();
@@ -59,6 +63,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -209,16 +215,30 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
+            this.id,
+            this.Name,
+            this.Price,
+            this.New,
+            this.CategoryID});
+            this.dataGridView.DataSource = this.allProductBindingSource2;
             this.dataGridView.Location = new System.Drawing.Point(759, 243);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(444, 278);
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(532, 278);
             this.dataGridView.TabIndex = 45;
+            // 
+            // allProductBindingSource2
+            // 
+            this.allProductBindingSource2.DataMember = "AllProduct";
+            this.allProductBindingSource2.DataSource = this.dBCaffeBrainDataSet9;
+            // 
+            // dBCaffeBrainDataSet9
+            // 
+            this.dBCaffeBrainDataSet9.DataSetName = "DBCaffeBrainDataSet9";
+            this.dBCaffeBrainDataSet9.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dBCaffeBrainDataSet3
             // 
@@ -245,25 +265,39 @@
             this.txbx_price.TabIndex = 46;
             this.txbx_price.TextChanged += new System.EventHandler(this.txbx_price_TextChanged);
             // 
-            // Column1
+            // allProductTableAdapter2
             // 
-            this.Column1.HeaderText = "Catagory";
-            this.Column1.Name = "Column1";
+            this.allProductTableAdapter2.ClearBeforeFill = true;
             // 
-            // Column2
+            // id
             // 
-            this.Column2.HeaderText = "Name";
-            this.Column2.Name = "Column2";
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
             // 
-            // Column3
+            // Name
             // 
-            this.Column3.HeaderText = "Price";
-            this.Column3.Name = "Column3";
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
             // 
-            // Column4
+            // Price
             // 
-            this.Column4.HeaderText = "Show";
-            this.Column4.Name = "Column4";
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // New
+            // 
+            this.New.DataPropertyName = "New";
+            this.New.HeaderText = "New";
+            this.New.Name = "New";
+            // 
+            // CategoryID
+            // 
+            this.CategoryID.DataPropertyName = "Category";
+            this.CategoryID.HeaderText = "CategoryID";
+            this.CategoryID.Name = "CategoryID";
             // 
             // AddProduct
             // 
@@ -284,13 +318,14 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbx_Catagory);
             this.Controls.Add(this.btn_Add);
-            this.Name = "AddProduct";
             this.Text = "AddProduct";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AddProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dBCaffeBrainDataSet3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.allProductBindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -314,9 +349,13 @@
         private System.Windows.Forms.BindingSource allProductBindingSource1;
         private DBCaffeBrainDataSet3TableAdapters.AllProductTableAdapter allProductTableAdapter1;
         private System.Windows.Forms.TextBox txbx_price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private DBCaffeBrainDataSet9 dBCaffeBrainDataSet9;
+        private System.Windows.Forms.BindingSource allProductBindingSource2;
+        private DBCaffeBrainDataSet9TableAdapters.AllProductTableAdapter allProductTableAdapter2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn New;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryID;
     }
 }

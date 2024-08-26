@@ -18,10 +18,6 @@ namespace CoffeBrainDesktopApp
         int selectRows;
         private void AllProductList_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dBCaffeBrainDataSet8.AllProduct' table. You can move, or remove it, as needed.
-         //   this.allProductTableAdapter1.Fill(this.dBCaffeBrainDataSet8.AllProduct);
-            // TODO: This line of code loads data into the 'dBCaffeBrainDataSet7.AllProduct' table. You can move, or remove it, as needed.
-         //   this.allProductTableAdapter.Fill(this.dBCaffeBrainDataSet7.AllProduct);
             
             dataGridView_AllProductList.DataSource = _contex.AllProducts.ToList();
             FillCatagoryCombo();

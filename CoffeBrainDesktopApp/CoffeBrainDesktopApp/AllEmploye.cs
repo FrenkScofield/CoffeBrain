@@ -20,12 +20,10 @@ namespace CoffeBrainDesktopApp
             _contex = new DBCaffeBrainEntities();
         }
         int selectRows;
-        BindingList<Enployee> bindigEnployees;
+        //BindingList<Enployee> bindigEnployees;
         private void AllEmploye_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dBCaffeBrainDataSet5.Enployee' table. You can move, or remove it, as needed.
-            // this.enployeeTableAdapter.Fill(this.dBCaffeBrainDataSet5.Enployee);
-            bindigEnployees = new BindingList<Enployee>();
+           // bindigEnployees = new BindingList<Enployee>();
            dataGridView_AllEmploye.DataSource = _contex.Enployees.ToList();
            
 
@@ -94,7 +92,7 @@ namespace CoffeBrainDesktopApp
                 enployee.LastName = txbx_Lasname.Text.Trim();
                 enployee.Email = txbx_Email.Text.Trim();
                 enployee.Username = txbx_Username.Text.Trim();
-                enployee.Password = txbx_Password.Text.Trim();
+                enployee.Password = CalculateMD5Hash.Utiliters.CalculateMD5Hash(txbx_Password.Text.Trim());
                 enployee.Phone = txbx_Phone.Text.Trim();
                 enployee.MissionID = (cmbx_Mission.SelectedItem as Mission).ID;
                 enployee.GenderID = (cmbx_Genders.SelectedItem as Gender).ID;

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CoffeBrainDesktopApp.Utiliters.Utiliters;
+using static CoffeBrainDesktopApp.CalculateMD5Hash.Utiliters;
 namespace CoffeBrainDesktopApp
 {
     public partial class AddProduct : Form
@@ -20,13 +20,13 @@ namespace CoffeBrainDesktopApp
             InitializeComponent();
             _contex = new DBCaffeBrainEntities();
         }
-
+        int productNum;
         private void AddProduct_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dBCaffeBrainDataSet3.AllProduct' table. You can move, or remove it, as needed.
-        //    this.allProductTableAdapter1.Fill(this.dBCaffeBrainDataSet3.AllProduct);
-            // TODO: This line of code loads data into the 'dBCaffeBrainDataSet1.AllProduct' table. You can move, or remove it, as needed.
-    //        this.allProductTableAdapter.Fill(this.dBCaffeBrainDataSet1.AllProduct);
+            this.allProductTableAdapter2.Fill(this.dBCaffeBrainDataSet9.AllProduct);
+
+            dataGridView.AutoGenerateColumns = false;
+
             dataGridView.DataSource = _contex.AllProducts.ToList();
 
             FillCatagoryCombo();
@@ -42,8 +42,8 @@ namespace CoffeBrainDesktopApp
         private void btn_Add_Click(object sender, EventArgs e)
         {
             string name = txbx_Name.Text.Trim();
-            string price = txbx_price.Text.Trim();
             Category category = cmbx_Catagory.SelectedItem as Category;
+            string price = txbx_price.Text.Trim();
             bool New = (bool)cmbx_New.SelectedItem;
             
 
@@ -71,24 +71,36 @@ namespace CoffeBrainDesktopApp
                 New = (bool)cmbx_New.SelectedItem,
                 
             };
-            
-            int n = dataGridView.Rows.Add();
-            dataGridView.Rows[n].Cells[0].Value = cmbx_Catagory.Text;
-            dataGridView.Rows[n].Cells[1].Value = txbx_Name.Text;
-            dataGridView.Rows[n].Cells[2].Value = txbx_price.Text;
-            dataGridView.Rows[n].Cells[3].Value = cmbx_New.Text;
-           
+
+            _contex.AllProducts.Add(allProduct);
 
             txbx_Name.Text = "";
             txbx_price.Text = "";
             cmbx_Catagory.Text = "";
             cmbx_New.Text = "";
-          
 
-            _contex.AllProducts.Add(allProduct);
+            if (productNum >= 0 && productNum < dataGridView.Rows.Count)
+            {
+                DataGridViewRow product = dataGridView.Rows[productNum];
+
+                // productNum = dataGridView.Rows.Add();
+                //  int n = dataGridView.Rows.Add();
+                product.Cells[1].Value = txbx_price.Text;
+            product.Cells[2].Value = txbx_Name.Text;
+            product.Cells[3].Value = cmbx_New.Text;
+                product.Cells[4].Value = category;
+
+            }
+            else
+            {
+                // Handle the case where the index is out of range
+                Console.WriteLine("Product number is out of range.");
+            }
             _contex.SaveChanges();
 
-         
+            dataGridView.DataSource = _contex.AllProducts.ToList();
+
+            ShowMessage("Product added succseesfully ", error: false);
 
         }
 

@@ -33,5 +33,16 @@ namespace CoffeBrainDesktopApp.Properties {
                 return ((string)(this["DBCaffeBrainConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-L67493A;Initial Catalog=DBCaffeBrain;Integrated Security=True" +
+            "")]
+        public string DBCaffeBrainConnectionString1 {
+            get {
+                return ((string)(this["DBCaffeBrainConnectionString1"]));
+            }
+        }
     }
 }

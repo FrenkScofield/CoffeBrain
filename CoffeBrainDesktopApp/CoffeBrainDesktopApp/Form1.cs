@@ -2,8 +2,8 @@
 using System.Windows.Forms;
 using System.Linq;
 using CoffeBrainDesktopApp.SQLDB;
-using static CoffeBrainDesktopApp.Utiliters.Utiliters;
-
+using static CoffeBrainDesktopApp.CalculateMD5Hash.Utiliters;
+using CoffeBrainDesktopApp.CalculateMD5Hash;
 
 namespace CoffeBrainDesktopApp
 {
@@ -29,7 +29,9 @@ namespace CoffeBrainDesktopApp
                 return;
             }
 
-            Enployee users = _contex.Enployees.FirstOrDefault(usr => usr.Username == username);
+            string pss = Utiliters.CalculateMD5Hash(passvord);
+
+              Enployee users = _contex.Enployees.FirstOrDefault(u => u.Username == username);
 
             if (users == null)
             {
@@ -37,10 +39,10 @@ namespace CoffeBrainDesktopApp
                 return;
             }
 
-            if (CheckPassword(passvord, users.Password))
+            if (!CheckPassword(passvord, users.Password))
             {
                 ShowMessage("Passvord or Username is Wrong");
-                return; 
+                return;
             }
 
             if (users.Mission.Name != "Admin")
@@ -59,8 +61,5 @@ namespace CoffeBrainDesktopApp
 
         }
 
-
-
-     
     }
 }

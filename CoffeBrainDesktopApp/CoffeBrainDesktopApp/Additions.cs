@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CoffeBrainDesktopApp.Utiliters.Utiliters;
+using static CoffeBrainDesktopApp.CalculateMD5Hash.Utiliters;
 
 namespace CoffeBrainDesktopApp
 {
