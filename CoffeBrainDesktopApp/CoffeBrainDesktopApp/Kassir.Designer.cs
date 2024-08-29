@@ -43,7 +43,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txbx_Price = new System.Windows.Forms.TextBox();
             this.btn_NextOrder = new System.Windows.Forms.Button();
-            this.dateTimePickerOrderList = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.btn_ExitKassir = new System.Windows.Forms.Button();
             this.btn_Finis = new System.Windows.Forms.Button();
@@ -57,6 +56,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.listBox_Orderlist = new System.Windows.Forms.ListBox();
             this.btn_Delete = new System.Windows.Forms.Button();
+            this.checkOut = new System.Windows.Forms.Button();
+            this.newOrder = new System.Windows.Forms.Button();
             label8 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -198,13 +199,16 @@
             // 
             // txbx_KassirName
             // 
-            this.txbx_KassirName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbx_KassirName.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txbx_KassirName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbx_KassirName.ForeColor = System.Drawing.Color.SaddleBrown;
             this.txbx_KassirName.Location = new System.Drawing.Point(34, 684);
             this.txbx_KassirName.Multiline = true;
             this.txbx_KassirName.Name = "txbx_KassirName";
             this.txbx_KassirName.Size = new System.Drawing.Size(224, 38);
             this.txbx_KassirName.TabIndex = 77;
+            this.txbx_KassirName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txbx_KassirName.UseWaitCursor = true;
             // 
             // label5
             // 
@@ -242,16 +246,6 @@
             this.btn_NextOrder.UseVisualStyleBackColor = false;
             this.btn_NextOrder.Click += new System.EventHandler(this.btn_NextOrder_Click);
             // 
-            // dateTimePickerOrderList
-            // 
-            this.dateTimePickerOrderList.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerOrderList.CalendarForeColor = System.Drawing.Color.Black;
-            this.dateTimePickerOrderList.CalendarMonthBackground = System.Drawing.Color.MediumOrchid;
-            this.dateTimePickerOrderList.Location = new System.Drawing.Point(311, 702);
-            this.dateTimePickerOrderList.Name = "dateTimePickerOrderList";
-            this.dateTimePickerOrderList.Size = new System.Drawing.Size(185, 20);
-            this.dateTimePickerOrderList.TabIndex = 84;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -280,13 +274,13 @@
             // btn_Finis
             // 
             this.btn_Finis.BackColor = System.Drawing.Color.Green;
-            this.btn_Finis.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Finis.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Finis.ForeColor = System.Drawing.Color.White;
-            this.btn_Finis.Location = new System.Drawing.Point(658, 687);
+            this.btn_Finis.Location = new System.Drawing.Point(846, 504);
             this.btn_Finis.Name = "btn_Finis";
-            this.btn_Finis.Size = new System.Drawing.Size(165, 108);
+            this.btn_Finis.Size = new System.Drawing.Size(188, 46);
             this.btn_Finis.TabIndex = 88;
-            this.btn_Finis.Text = "FINISH";
+            this.btn_Finis.Text = "Add Order";
             this.btn_Finis.UseVisualStyleBackColor = false;
             this.btn_Finis.Click += new System.EventHandler(this.btn_Finis_Click);
             // 
@@ -303,6 +297,7 @@
             // 
             // dataGridView_OrderList
             // 
+            this.dataGridView_OrderList.AllowUserToAddRows = false;
             this.dataGridView_OrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_OrderList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -365,12 +360,39 @@
             this.btn_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.ForeColor = System.Drawing.Color.White;
-            this.btn_Delete.Location = new System.Drawing.Point(1227, 504);
+            this.btn_Delete.Location = new System.Drawing.Point(1224, 504);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(169, 49);
+            this.btn_Delete.Size = new System.Drawing.Size(172, 46);
             this.btn_Delete.TabIndex = 94;
             this.btn_Delete.Text = "Delete Select";
             this.btn_Delete.UseVisualStyleBackColor = false;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
+            // 
+            // checkOut
+            // 
+            this.checkOut.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.checkOut.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.checkOut.Location = new System.Drawing.Point(654, 609);
+            this.checkOut.Name = "checkOut";
+            this.checkOut.Size = new System.Drawing.Size(180, 53);
+            this.checkOut.TabIndex = 95;
+            this.checkOut.Text = "Check Out";
+            this.checkOut.UseVisualStyleBackColor = false;
+            this.checkOut.Click += new System.EventHandler(this.checkOut_Click);
+            // 
+            // newOrder
+            // 
+            this.newOrder.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.newOrder.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newOrder.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.newOrder.Location = new System.Drawing.Point(654, 746);
+            this.newOrder.Name = "newOrder";
+            this.newOrder.Size = new System.Drawing.Size(180, 49);
+            this.newOrder.TabIndex = 97;
+            this.newOrder.Text = "New Order";
+            this.newOrder.UseVisualStyleBackColor = false;
+            this.newOrder.Click += new System.EventHandler(this.newOrder_Click);
             // 
             // Kassir
             // 
@@ -379,6 +401,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1444, 836);
+            this.Controls.Add(this.newOrder);
+            this.Controls.Add(this.checkOut);
             this.Controls.Add(this.btn_Delete);
             this.Controls.Add(this.listBox_Orderlist);
             this.Controls.Add(this.label10);
@@ -387,7 +411,6 @@
             this.Controls.Add(this.btn_Finis);
             this.Controls.Add(this.btn_ExitKassir);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dateTimePickerOrderList);
             this.Controls.Add(this.btn_NextOrder);
             this.Controls.Add(label6);
             this.Controls.Add(this.txbx_Price);
@@ -422,7 +445,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txbx_Price;
         private System.Windows.Forms.Button btn_NextOrder;
-        private System.Windows.Forms.DateTimePicker dateTimePickerOrderList;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btn_ExitKassir;
         private System.Windows.Forms.Button btn_Finis;
@@ -436,5 +458,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ListBox listBox_Orderlist;
         private System.Windows.Forms.Button btn_Delete;
+        private System.Windows.Forms.Button checkOut;
+        private System.Windows.Forms.Button newOrder;
     }
 }

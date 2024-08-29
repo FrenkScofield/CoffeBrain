@@ -1,12 +1,6 @@
 ﻿using CoffeBrainDesktopApp.SQLDB;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static CoffeBrainDesktopApp.CalculateMD5Hash.Utiliters;
 
@@ -15,12 +9,27 @@ namespace CoffeBrainDesktopApp
     public partial class Additions : Form
     {
         private readonly DBCaffeBrainEntities _contex;
+        int additionNum;
 
         public Additions()
         {
             InitializeComponent();
             _contex = new DBCaffeBrainEntities();
         }
+        private void Additions_Load(object sender, EventArgs e)
+        {
+            dataGridView_Additions.AutoGenerateColumns = false;
+            dataGridView_Additions.DataSource = _contex.Additions.ToList();
+            FillProducts();
+
+
+        }
+        //private void dataGridView_Additions_CellContentClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e)
+        //{
+        //    dataGridView_Additions.AutoGenerateColumns = false;
+        //    dataGridView_Additions.DataSource = _contex.Additions.ToList();
+
+        //}
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
@@ -32,8 +41,8 @@ namespace CoffeBrainDesktopApp
                 ShowMessage("Please fill in correctly.");
                 return;
             }
-           
-            if(_contex.Additions.Any(pro => pro.Name == additions))
+
+            if (_contex.Additions.Any(pro => pro.Name == additions))
             {
                 ShowMessage("This product already exists");
                 return;
@@ -46,17 +55,29 @@ namespace CoffeBrainDesktopApp
                 ProductId = allProduct.id,
             };
 
-            int a = dataGridView_Additions.Rows.Add();
-            dataGridView_Additions.Rows[a].Cells[0].Value = txbx_Addition.Text;
-            dataGridView_Additions.Rows[a].Cells[1].Value = txbx_AdditionsPrice.Text;
-            dataGridView_Additions.Rows[a].Cells[2].Value = cmbx_ProducName.Text;
+
+
+            if (additionNum >= 0 && additionNum < dataGridView_Additions.Rows.Count)
+            {
+                DataGridViewRow row = dataGridView_Additions.Rows[additionNum];
+                row.Cells[1].Value = txbx_Addition.Text;
+                row.Cells[2].Value = txbx_AdditionsPrice.Text;
+                row.Cells[3].Value = allProduct.id ;
+            }
+            else
+            {
+                Console.WriteLine("Addition number is out of range.");
+            }
             txbx_Addition.Text = "";
             txbx_AdditionsPrice.Text = "";
 
             _contex.Additions.Add(addition);
+
             _contex.SaveChanges();
 
-            ShowMessage("successfully added", error: false);
+            dataGridView_Additions.DataSource = _contex.Additions.ToList();
+
+            ShowMessage("Addition successfully added", error: false);
 
         }
 
@@ -85,16 +106,13 @@ namespace CoffeBrainDesktopApp
             }
         }
 
-        private void Additions_Load(object sender, EventArgs e)
-        {
-            FillProducts();
-        }
+      
         private void FillProducts()
         {
            cmbx_ProducName.Items.AddRange(_contex.AllProducts.ToArray());
 
         }
 
-
+        
     }
 }

@@ -62,6 +62,7 @@ namespace CoffeBrainDesktopApp
                 txbx_Price.Text = txbx_Price.Text.Remove(txbx_Price.Text.Length - 1);
             }
         }
+
         public void TextSpace()
         {
         
@@ -70,6 +71,7 @@ namespace CoffeBrainDesktopApp
             txbx_PId.Text = "";
 
         }
+
         private void btn_Update_Click(object sender, EventArgs e)
         {
             if (txbx_PId.Text != "")
@@ -93,7 +95,7 @@ namespace CoffeBrainDesktopApp
             {
             MessageBox.Show("Please select any Product");
             }
-}
+        }
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
@@ -112,8 +114,6 @@ namespace CoffeBrainDesktopApp
                 MessageBox.Show("Please select any Product");
 
             }
-
-
         }
     }
 }

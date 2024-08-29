@@ -11,6 +11,8 @@ namespace CoffeBrainDesktopApp
     {
         private readonly DBCaffeBrainEntities _contex;
 
+        public static string currentUser;
+
         public Form1()
         {
             InitializeComponent();
@@ -45,6 +47,8 @@ namespace CoffeBrainDesktopApp
                 return;
             }
 
+            currentUser = username;
+
             if (users.Mission.Name != "Admin")
             {
                 (new Kassir()).ShowDialog();
@@ -56,8 +60,6 @@ namespace CoffeBrainDesktopApp
 
             txbx_Username.Text = "";
             txbx_Password.Text = "";
-
-            
 
         }
 

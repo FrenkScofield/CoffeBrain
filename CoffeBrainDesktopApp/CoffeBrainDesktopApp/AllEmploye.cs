@@ -20,10 +20,9 @@ namespace CoffeBrainDesktopApp
             _contex = new DBCaffeBrainEntities();
         }
         int selectRows;
-        //BindingList<Enployee> bindigEnployees;
+
         private void AllEmploye_Load(object sender, EventArgs e)
         {
-           // bindigEnployees = new BindingList<Enployee>();
            dataGridView_AllEmploye.DataSource = _contex.Enployees.ToList();
            
 
@@ -136,7 +135,7 @@ namespace CoffeBrainDesktopApp
             {
                 MessageBox.Show("Please select any employee");
             }
-            }
+        }
 
         private void txbx_Firstname_TextChanged(object sender, EventArgs e)
         {

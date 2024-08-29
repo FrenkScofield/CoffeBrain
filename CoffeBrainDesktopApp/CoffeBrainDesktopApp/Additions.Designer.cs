@@ -37,11 +37,12 @@
             this.btn_Add = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView_Additions = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txbx_AdditionsPrice = new System.Windows.Forms.TextBox();
             this.cmbx_ProducName = new System.Windows.Forms.ComboBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             label3 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
@@ -126,6 +127,7 @@
             this.btn_Add.Text = "Add";
             this.btn_Add.UseVisualStyleBackColor = false;
             this.btn_Add.Click += new System.EventHandler(this.btn_Add_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -142,29 +144,15 @@
             // 
             this.dataGridView_Additions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_Additions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
+            this.id,
+            this.Name,
+            this.Price,
+            this.Product});
             this.dataGridView_Additions.Location = new System.Drawing.Point(695, 199);
             this.dataGridView_Additions.Name = "dataGridView_Additions";
-            this.dataGridView_Additions.Size = new System.Drawing.Size(349, 296);
+            this.dataGridView_Additions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_Additions.Size = new System.Drawing.Size(447, 296);
             this.dataGridView_Additions.TabIndex = 53;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Additions";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Price";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Product Name";
-            this.Column3.Name = "Column3";
-            // 
             // txbx_AdditionsPrice
             // 
             this.txbx_AdditionsPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -187,13 +175,37 @@
             this.cmbx_ProducName.Size = new System.Drawing.Size(224, 37);
             this.cmbx_ProducName.TabIndex = 73;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            // 
+            // Name
+            // 
+            this.Name.DataPropertyName = "Name";
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            // 
+            // Product
+            // 
+            this.Product.DataPropertyName = "ProductId";
+            this.Product.HeaderText = "Product";
+            this.Product.Name = "Product";
+            // 
             // Additions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1096, 628);
+            this.ClientSize = new System.Drawing.Size(1199, 636);
             this.Controls.Add(label4);
             this.Controls.Add(this.cmbx_ProducName);
             this.Controls.Add(this.txbx_AdditionsPrice);
@@ -204,7 +216,7 @@
             this.Controls.Add(this.txbx_Addition);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Add);
-            this.Name = "Additions";
+            //this.Name = "Additions";
             this.Text = "Additions";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Additions_Load);
@@ -220,10 +232,11 @@
         private System.Windows.Forms.Button btn_Add;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView_Additions;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.TextBox txbx_AdditionsPrice;
         private System.Windows.Forms.ComboBox cmbx_ProducName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product;
     }
 }

@@ -1,12 +1,10 @@
-﻿using CoffeBrainDesktopApp.SQLDB;
+﻿
+using CoffeBrainDesktopApp.SQLDB;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace CoffeBrainDesktopApp
@@ -28,6 +26,8 @@ namespace CoffeBrainDesktopApp
 
         private void Kassir_Load(object sender, EventArgs e)
         {
+            txbx_KassirName.Text = "Hi  " + Form1.currentUser;
+            txbx_KassirName.ReadOnly = true;
             FillComboCatory();
         }
         private void FillComboCatory()
@@ -55,23 +55,32 @@ namespace CoffeBrainDesktopApp
 
         private void btn_NextOrder_Click(object sender, EventArgs e)
         {
-            int g = dataGridView_OrderList.Rows.Add();
+            if (txbx_Count.Text != "" && txbx_Price.Text != "" && cmbx_Additions.Text != "" && cmbx_ProducName.Text != "")
+            {
+                int g = dataGridView_OrderList.Rows.Add();
             dataGridView_OrderList.Rows[g].Cells[0].Value = cmbx_Catagory.Text;
             dataGridView_OrderList.Rows[g].Cells[1].Value = cmbx_ProducName.Text;
             dataGridView_OrderList.Rows[g].Cells[2].Value = cmbx_Additions.Text;
             dataGridView_OrderList.Rows[g].Cells[3].Value = txbx_Count.Text;
             dataGridView_OrderList.Rows[g].Cells[4].Value = txbx_Price.Text;
 
+            }
+            else
+            {
+                MessageBox.Show("Cannot be sent empty");
+                return;
+            }
             txbx_Count.Text = "";
             txbx_Price.Text = "";
             cmbx_Catagory.SelectedIndex = 0;
-            cmbx_Additions.SelectedIndex = 0;
-            cmbx_ProducName.SelectedIndex = 0;
+            cmbx_Additions.Text = "";
+            cmbx_ProducName.Text = "";
 
         }
 
         private void txbx_Count_TextChanged(object sender, EventArgs e)
         {
+
             if (System.Text.RegularExpressions.Regex.IsMatch(txbx_Count.Text, "[A-z]"))
             {
                 MessageBox.Show("Please enter only number.");
@@ -89,38 +98,118 @@ namespace CoffeBrainDesktopApp
                 txbx_Price.Text = txbx_Price.Text.Remove(txbx_Price.Text.Length - 1);
             }
         }
-
+        string nl = Environment.NewLine;
         private void btn_Finis_Click(object sender, EventArgs e)
         {
 
-            //string[,] DataValue = new string[dataGridView_OrderList.Rows.Count, dataGridView_OrderList.Columns.Count];
-            //foreach(DataGridViewRow row in dataGridView_OrderList.Rows)
-            //{
-            //    foreach (DataGridViewColumn col in dataGridView_OrderList.Columns)
-            //    {
-            //        DataValue[row.Index, col.Index] = dataGridView_OrderList.Rows[row.Index].Cells[col.Index].Value.ToString();
-            //    }
-            //}
-            //int i = 1;
-            //string strval = "";
-            //foreach(string ss in DataValue)
-            //{
-            //    strval += ss;
-            //    if(i == 5)
-            //    {
-            //        listBox_Orderlist.Items.Add(strval);
-            //        strval = "";
-            //        i = 0;
-            //    }
-
-            //        i++;
-            //}
-
-            for (int i = 0; i < dataGridView_OrderList.RowCount; i++)
+            string[,] DataValue = new string[dataGridView_OrderList.Rows.Count, dataGridView_OrderList.Columns.Count];
+           
+            foreach (DataGridViewRow row in dataGridView_OrderList.Rows)
             {
-                listBox_Orderlist.Items.Add(dataGridView_OrderList.Rows[i].Cells[1]);
+                foreach (DataGridViewColumn col in dataGridView_OrderList.Columns)
+                {
+                    DataValue[row.Index, col.Index] = dataGridView_OrderList.Rows[row.Index].Cells[col.Index].Value.ToString();
+                }
             }
 
+              var a = listBox_Orderlist.Items;
+            //foreach (string row in a)
+            //{
+            //    if(row == "                                YOUR BILL")
+            //    {
+            //        int num = 1;
+            //        string strval1 = "";
+            //        foreach (string ss in DataValue)
+            //        {
+            //            strval1 += ss;
+            //            strval1 += " , ";
+            //            if (num == 5)
+            //            {
+            //                strval1 += "     ---       " + DateTime.Now.ToString();
+            //                listBox_Orderlist.Items.AddRange(strval1.Split('\n'));
+            //                strval1 = "";
+            //                num = 0;
+            //            }
+            //            num++;
+            //        };
+
+            //        dataGridView_Clear();
+            //        return;
+            //    }
+            //}
+
+            int i = 1;
+            string strval = "";
+           
+            string title = nl + "                                YOUR BILL" + nl;
+
+            if (a.Count == 0)
+            {
+              listBox_Orderlist.Items.AddRange(title.Split('\n'));
+               
+            }
+
+            foreach (string ss in DataValue)
+            {
+                strval += ss;
+                strval += " , ";
+                if (i == 5)
+                {
+                    strval += "     ---       " + DateTime.Now.ToString();
+                    listBox_Orderlist.Items.AddRange(strval.Split('\n'));
+                    strval = "";
+                    i = 0;
+                }
+                i++;
+            };
+
+            dataGridView_Clear();
+        }
+
+        public void dataGridView_Clear()
+        {
+            int rowCount = dataGridView_OrderList.Rows.Count;
+
+            for (int item = 0; item < rowCount; item++)
+            {
+                dataGridView_OrderList.Rows.RemoveAt(0);
+            }
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+            int count = dataGridView_OrderList.Rows.Count;
+
+            if (count != 0)
+            {
+                int currentOrder = dataGridView_OrderList.CurrentCell.RowIndex;
+                dataGridView_OrderList.Rows.RemoveAt(currentOrder);
+                MessageBox.Show("Successfully deleted");
+            }
+            else
+            {
+                MessageBox.Show("Please select any employee");
+            }
+        }
+
+            int num = 0;
+        private void checkOut_Click(object sender, EventArgs e)
+        {
+            string currentCashier = nl + Form1.currentUser;
+
+            if (num == 0)
+            {
+                listBox_Orderlist.Items.AddRange(currentCashier.Split('\n'));
+                num++;
+                btn_Finis.Enabled = false;
+            }
+        }
+
+        private void newOrder_Click(object sender, EventArgs e)
+        {
+           listBox_Orderlist.Items.Clear();
+            btn_Finis.Enabled = true;
+            num = 0;
         }
     }
 }
