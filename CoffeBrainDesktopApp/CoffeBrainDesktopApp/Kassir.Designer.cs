@@ -218,9 +218,9 @@
             this.label5.ForeColor = System.Drawing.Color.Transparent;
             this.label5.Location = new System.Drawing.Point(198, -21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(1180, 170);
+            this.label5.Size = new System.Drawing.Size(1230, 170);
             this.label5.TabIndex = 79;
-            this.label5.Text = "Welcome to CaffeBrain";
+            this.label5.Text = "Welcome to CaffeeBrain";
             // 
             // txbx_Price
             // 
@@ -278,7 +278,7 @@
             this.btn_Finis.ForeColor = System.Drawing.Color.White;
             this.btn_Finis.Location = new System.Drawing.Point(846, 504);
             this.btn_Finis.Name = "btn_Finis";
-            this.btn_Finis.Size = new System.Drawing.Size(188, 46);
+            this.btn_Finis.Size = new System.Drawing.Size(169, 46);
             this.btn_Finis.TabIndex = 88;
             this.btn_Finis.Text = "Add Order";
             this.btn_Finis.UseVisualStyleBackColor = false;
@@ -339,20 +339,20 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Javanese Text", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Javanese Text", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Transparent;
-            this.label10.Location = new System.Drawing.Point(846, 553);
+            this.label10.Location = new System.Drawing.Point(1010, 560);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(490, 73);
+            this.label10.Size = new System.Drawing.Size(215, 66);
             this.label10.TabIndex = 92;
-            this.label10.Text = "We thank you. Enjoy your meal\r\n";
+            this.label10.Text = "Customer Bill";
             // 
             // listBox_Orderlist
             // 
             this.listBox_Orderlist.FormattingEnabled = true;
-            this.listBox_Orderlist.Location = new System.Drawing.Point(846, 609);
+            this.listBox_Orderlist.Location = new System.Drawing.Point(1021, 609);
             this.listBox_Orderlist.Name = "listBox_Orderlist";
-            this.listBox_Orderlist.Size = new System.Drawing.Size(559, 186);
+            this.listBox_Orderlist.Size = new System.Drawing.Size(375, 186);
             this.listBox_Orderlist.TabIndex = 93;
             // 
             // btn_Delete
@@ -360,9 +360,9 @@
             this.btn_Delete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btn_Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Delete.ForeColor = System.Drawing.Color.White;
-            this.btn_Delete.Location = new System.Drawing.Point(1224, 504);
+            this.btn_Delete.Location = new System.Drawing.Point(1227, 504);
             this.btn_Delete.Name = "btn_Delete";
-            this.btn_Delete.Size = new System.Drawing.Size(172, 46);
+            this.btn_Delete.Size = new System.Drawing.Size(169, 46);
             this.btn_Delete.TabIndex = 94;
             this.btn_Delete.Text = "Delete Select";
             this.btn_Delete.UseVisualStyleBackColor = false;
@@ -371,11 +371,11 @@
             // checkOut
             // 
             this.checkOut.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.checkOut.Font = new System.Drawing.Font("Microsoft YaHei UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkOut.Font = new System.Drawing.Font("Microsoft YaHei UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkOut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkOut.Location = new System.Drawing.Point(654, 609);
+            this.checkOut.Location = new System.Drawing.Point(846, 609);
             this.checkOut.Name = "checkOut";
-            this.checkOut.Size = new System.Drawing.Size(180, 53);
+            this.checkOut.Size = new System.Drawing.Size(169, 44);
             this.checkOut.TabIndex = 95;
             this.checkOut.Text = "Check Out";
             this.checkOut.UseVisualStyleBackColor = false;
@@ -384,11 +384,11 @@
             // newOrder
             // 
             this.newOrder.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.newOrder.Font = new System.Drawing.Font("Nirmala UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newOrder.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newOrder.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.newOrder.Location = new System.Drawing.Point(654, 746);
+            this.newOrder.Location = new System.Drawing.Point(845, 752);
             this.newOrder.Name = "newOrder";
-            this.newOrder.Size = new System.Drawing.Size(180, 49);
+            this.newOrder.Size = new System.Drawing.Size(170, 43);
             this.newOrder.TabIndex = 97;
             this.newOrder.Text = "New Order";
             this.newOrder.UseVisualStyleBackColor = false;

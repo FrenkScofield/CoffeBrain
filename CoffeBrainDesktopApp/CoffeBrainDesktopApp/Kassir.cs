@@ -113,40 +113,19 @@ namespace CoffeBrainDesktopApp
             }
 
               var a = listBox_Orderlist.Items;
-            //foreach (string row in a)
-            //{
-            //    if(row == "                                YOUR BILL")
-            //    {
-            //        int num = 1;
-            //        string strval1 = "";
-            //        foreach (string ss in DataValue)
-            //        {
-            //            strval1 += ss;
-            //            strval1 += " , ";
-            //            if (num == 5)
-            //            {
-            //                strval1 += "     ---       " + DateTime.Now.ToString();
-            //                listBox_Orderlist.Items.AddRange(strval1.Split('\n'));
-            //                strval1 = "";
-            //                num = 0;
-            //            }
-            //            num++;
-            //        };
-
-            //        dataGridView_Clear();
-            //        return;
-            //    }
-            //}
-
+          
             int i = 1;
             string strval = "";
-           
-            string title = nl + "                                YOUR BILL" + nl;
+            string title = nl + "                            COFFEE BRAIN"+
+                           nl +"                 Thank you on behalf of our store" + nl+
+                           nl + "                              YOUR BILL" + nl +
+                           "---------------------------------------------------------" +
+                           "---------------------------------------------------------";
 
             if (a.Count == 0)
             {
               listBox_Orderlist.Items.AddRange(title.Split('\n'));
-               
+
             }
 
             foreach (string ss in DataValue)
@@ -192,14 +171,20 @@ namespace CoffeBrainDesktopApp
             }
         }
 
-            int num = 0;
+        int num = 0;
         private void checkOut_Click(object sender, EventArgs e)
         {
-            string currentCashier = nl + Form1.currentUser;
-
+            string currentCashier = "---------------------------------------------------------------------" +
+                                        "---------------------------------------------" 
+                                     + nl + "Cashier :" + Form1.currentUser;
+            string companyInfo = nl+" Company Info." 
+                               + nl+" Name: Cafe Brain."
+                               + nl+" Addres: New York city / street 31 / A"
+                               + nl+" Phone: +994 55 465 65 31";
             if (num == 0)
             {
                 listBox_Orderlist.Items.AddRange(currentCashier.Split('\n'));
+                listBox_Orderlist.Items.AddRange(companyInfo.Split('\n'));
                 num++;
                 btn_Finis.Enabled = false;
             }
